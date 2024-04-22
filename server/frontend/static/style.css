@@ -124,3 +124,21 @@ img{
     text-align:center;
     box-shadow: 2px 2px 3px #999;  
 }
+
+.dealer {
+    color: white; 
+    text-shadow: 2px 2px 2px #000000; font-family: serif
+  }
+  
+  .cnfo {
+    text-align: justify;
+  }
+  
+  .contact-info {
+    text-align: center; 
+  }
+  
+  ul.no-bullets {
+    list-style-type: none; /* Remove bullets */
+  }
+  
