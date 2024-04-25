@@ -136,4 +136,3 @@ def add_review(request):
                                  "Error in posting review: {}".format(e)})
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
-
