@@ -21,10 +21,10 @@ const Dealerships = require('./dealership');
 
 try {
     Reviews.deleteMany({}).then(() => {
-        Reviews.insertMany(reviews_data['reviews']);
+        Reviews.insertMany(reviews_data.reviews); // Using dot notation instead of bracket notation
     });
     Dealerships.deleteMany({}).then(() => {
-        Dealerships.insertMany(dealerships_data['dealerships']);
+        Dealerships.insertMany(dealerships_data.dealerships); // Using dot notation instead of bracket notation
     });
 
 } catch (error) {
