@@ -14,6 +14,7 @@ from .restapis import get_request, analyze_review_sentiments, post_review
 # Get an instance of a logger
 logger = logging.getLogger(__name__)
 
+
 # Create your views here.
 # Car view
 def get_cars(request):
@@ -69,7 +70,7 @@ def registration(request):
         # Check if user already exists
         User.objects.get(username=username)
         username_exist = True
-    except:
+    except User.DoesNotExist:
         # If not, simply log this is a new user
         logger.debug("{} is new user".format(username))
 
@@ -90,7 +91,8 @@ def registration(request):
 
 # # Update the `get_dealerships` view to render the index page with
 # a list of dealerships
-# Update the `get_dealerships` render list of dealerships all by default, particular state if state is passed
+# Update the `get_dealerships` render list of dealerships all by default,
+# particular state if state is passed
 def get_dealerships(request, state="All"):
     if state == "All":
         endpoint = "/fetchDealers"
