@@ -1,13 +1,8 @@
 # Uncomment the required imports before adding the code
 
 # from django.shortcuts import render  # Unused
-from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
+from django.http import JsonResponse
 from django.contrib.auth.models import User
-from django.shortcuts import get_object_or_404, redirect  # Unused
-from django.contrib.auth import logout  # Unused
-from django.contrib import messages  # Unused
-from datetime import datetime  # Unused
-
 from django.contrib.auth import login, authenticate
 import logging
 import json
@@ -137,7 +132,8 @@ def add_review(request):
         try:
             response = post_review(data)
             return JsonResponse({"status": 200})
-        except:
-            return JsonResponse({"status": 401, "message": "Error in posting review"})
+        except Exception as e:
+            return JsonResponse({"status": 401, "message":
+                                 "Error in posting review: {}".format(e)})
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
