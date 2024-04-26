@@ -29,11 +29,9 @@ SECRET_KEY =\
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'localhost', 'https://nathanielr-8085.theiadockernext-0-labs' +
-    '-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai']
+    'localhost', 'https://nathanielr-8085.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai']
 CSRF_TRUSTED_ORIGINS = [
-    'https://nathanielr-8085.theiadockernext-0-labs-prod-theiak8s' +
-    '-4-tor01.proxy.cognitiveclass.ai']
+    'https://nathanielr-8085.theiadockernext-0-labs-prod-theiak8s-4-tor01.proxy.cognitiveclass.ai']
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [],
