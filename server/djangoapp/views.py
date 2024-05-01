@@ -98,9 +98,6 @@ def get_dealerships(request, state="All"):
     return JsonResponse({"status": 200, "dealers": dealerships})
 
 
-
-
-
 # Create a `get_dealer_details` view to render the dealer details
 def get_dealer_details(request, dealer_id):
     if dealer_id:
@@ -125,7 +122,7 @@ def add_review(request):
     else:
         return JsonResponse({"status": 403, "message": "Unauthorized"})
 
-        
+
 # Create a `get_dealer_reviews` view to render the reviews of a dealer
 def get_dealer_reviews(request, dealer_id):
     try:
@@ -134,9 +131,13 @@ def get_dealer_reviews(request, dealer_id):
             reviews = get_request(endpoint)
             if reviews:
                 for review_detail in reviews:
-                    response = analyze_review_sentiments(review_detail.get('review'))
+                    response = analyze_review_sentiments(
+                        review_detail.get('review')
+                    )
                     if response:
-                        review_detail['sentiment'] = response.get('sentiment')
+                        review_detail['sentiment'] = response.get(
+                            'sentiment'
+                        )
                     else:
                         review_detail['sentiment'] = None
                 return JsonResponse({"status": 200, "reviews": reviews})
@@ -146,4 +147,6 @@ def get_dealer_reviews(request, dealer_id):
             return JsonResponse({"status": 400, "message": "Bad Request"})
     except Exception as e:
         logger.error(f"Error fetching reviews: {str(e)}")
-        return JsonResponse({"status": 500, "message": "Internal Server Error"})
+        return JsonResponse({
+            "status": 500, "message": "Internal Server Error"}
+                           )
