@@ -22,12 +22,14 @@ def searchcars_request(endpoint, **kwargs):
 
     print("GET from {} ".format(request_url))
     try:
-        # Call get method of requests library with URL and parameters
+        # Call get method of requests library with URL
         response = requests.get(request_url)
+        # Ensure we raise for status codes that indicate an error
+        response.raise_for_status()
         return response.json()
-    except:
-        # If any error occurs
-        print("Network exception occurred")
+    except requests.exceptions.RequestException as e:
+        # Handle specific network-related exceptions
+        print(f"Network exception occurred: {e}")
     finally:
         print("GET request call complete!")
 
